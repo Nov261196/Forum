@@ -1,0 +1,643 @@
+:root {
+    --primary-color: #3e8aee;
+    --secondary-color: #b18fff;
+    --text-color: #e0e0e0;
+    --bg-dark: #121212;
+    --navbar-bg: #1a1a1a;
+    --dropdown-bg: #2a2a2a;
+    --border-color: #333;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-dark);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navbar styles */
+.navbar {
+    background-color: var(--navbar-bg);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-left .logo {
+    color: var(--primary-color);
+    font-size: 28px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.navbar-center ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar-center ul li {
+    margin: 0 15px;
+}
+
+.navbar-center ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.navbar-center ul li a:hover {
+    color: var(--primary-color);
+}
+
+.navbar-right {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative; /* Để dropdown menu định vị tương đối */
+    padding: 5px; /* Giúp dễ click hơn */
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.user-info:hover {
+    background-color: #333;
+}
+
+#username-display {
+    margin-right: 10px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+    transition: border-color 0.3s ease;
+}
+
+.user-info:hover .user-avatar {
+    border-color: var(--secondary-color);
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 10px); /* Đặt bên dưới avatar */
+    right: 0;
+    background-color: var(--dropdown-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    min-width: 150px;
+    display: none; /* Mặc định ẩn */
+    flex-direction: column;
+    z-index: 1000;
+    padding: 10px 0;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.user-info:hover .dropdown-menu {
+    display: flex; /* Hiển thị khi hover vào user-info */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dropdown-menu a {
+    padding: 10px 20px;
+    color: var(--text-color);
+    text-decoration: none;
+    white-space: nowrap; /* Ngăn chặn xuống dòng */
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dropdown-menu a:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+#logout-button {
+    border-top: 1px solid var(--border-color); /* Đường kẻ phân cách */
+    margin-top: 5px;
+    padding-top: 10px !important;
+    color: #ff6b6b; /* Màu đỏ cho nút đăng xuất */
+}
+
+#logout-button:hover {
+    background-color: #ff6b6b;
+    color: #fff;
+}
+
+/* Main content styles */
+.main-content {
+    flex-grow: 1; /* Đảm bảo nội dung chiếm hết không gian còn lại */
+    padding: 40px;
+    text-align: center;
+}
+
+.main-content h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    text-shadow: 0 0 10px rgba(62, 138, 238, 0.5);
+}
+
+.main-content h1 span {
+    color: var(--secondary-color);
+}
+
+.main-content p {
+    font-size: 1.2em;
+    color: #ccc;
+}
+
+
+/* --- PROFILE PAGE STYLES --- */
+
+.main-content.profile-page-content {
+    padding: 30px;
+    background-color: #f0f2f5; /* Nền nhẹ nhàng hơn */
+    min-height: calc(100vh - 80px); /* Đảm bảo chiều cao tối thiểu */
+    display: flex;
+    justify-content: center; /* Căn giữa nội dung */
+    align-items: flex-start; /* Căn trên đầu nội dung */
+}
+
+.profile-container {
+    display: grid; /* Sử dụng Grid cho layout chính */
+    grid-template-columns: 1fr; /* Mặc định 1 cột trên mobile */
+    gap: 30px; /* Khoảng cách giữa các card */
+    max-width: 900px; /* Chiều rộng tối đa của container */
+    width: 100%;
+    margin-top: 20px; /* Khoảng cách từ navbar */
+}
+
+@media (min-width: 768px) {
+    .profile-container {
+        grid-template-columns: 1fr 1fr; /* 2 cột trên tablet và desktop */
+    }
+}
+
+.profile-card {
+    background-color: #ffffff;
+    border-radius: 12px; /* Góc bo tròn hơn */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Đổ bóng nhẹ nhàng */
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-card:hover {
+    transform: translateY(-5px); /* Hiệu ứng nổi lên khi hover */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Profile Info Card */
+.profile-info-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.avatar-display-wrapper {
+    position: relative;
+    width: 150px; /* Kích thước ảnh avatar */
+    height: 150px;
+    margin-bottom: 25px;
+    border-radius: 50%;
+    overflow: hidden; /* Đảm bảo ảnh bo tròn */
+    border: 4px solid #fff; /* Viền trắng */
+    box-shadow: 0 0 0 3px var(--primary-color); /* Viền màu chính */
+}
+
+.profile-main-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Đảm bảo ảnh vừa khung mà không bị méo */
+    border-radius: 50%; /* Tròn hoàn hảo */
+}
+
+.upload-icon-overlay {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: var(--primary-color); /* Màu nền icon */
+    color: #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.2em;
+    border: 2px solid #fff; /* Viền trắng cho icon */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.upload-icon-overlay:hover {
+    background-color: #0056b3; /* Màu đậm hơn khi hover */
+}
+
+.profile-name {
+    font-size: 2.2em;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.profile-detail {
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-detail .icon {
+    margin-right: 10px;
+    color: var(--primary-color);
+}
+
+.profile-actions {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap; /* Cho phép các nút xuống dòng trên màn hình nhỏ */
+    justify-content: center;
+}
+
+/* Buttons (có thể đã có, nhưng kiểm tra lại) */
+.btn {
+    padding: 12px 25px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+}
+
+
+/* Upload Card Styles */
+.upload-card h2 {
+    font-size: 1.8em;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.file-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.hidden-file-input {
+    display: none;
+}
+
+.custom-file-upload {
+    background-color: #e0e0e0;
+    color: #333;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+}
+
+.custom-file-upload:hover {
+    background-color: #d0d0d0;
+    color: var(--primary-color);
+}
+
+#file-name-display {
+    font-size: 0.95em;
+    color: #777;
+    word-break: break-all; /* Ngắt chữ dài */
+    text-align: center;
+}
+
+.upload-btn {
+    width: 100%;
+    padding: 15px; /* Nút to hơn */
+}
+
+.upload-message {
+    margin-top: 20px;
+    font-size: 1em;
+    font-weight: 500;
+}
+.upload-message[style*="color: green"] {
+    color: #28a745; /* Bootstrap green */
+}
+.upload-message[style*="color: red"] {
+    color: #dc3545; /* Bootstrap red */
+}
+
+
+/* Global utility styles (nếu chưa có) */
+:root {
+    --primary-color: #007bff; /* Màu xanh chủ đạo */
+    --text-color: #333;
+    --secondary-text-color: #666;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f4f7f6; /* Nền nhẹ nhàng */
+    color: var(--text-color);
+}
+
+/* NavBar (nếu chưa có hoặc muốn cập nhật) */
+.navbar {
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.navbar-center ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 25px;
+}
+
+.navbar-center ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar-center ul li a:hover {
+    color: var(--primary-color);
+}
+
+.navbar-right {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    gap: 10px; /* Khoảng cách giữa tên và avatar */
+}
+
+.user-info:hover .dropdown-menu {
+    display: flex; /* Hiển thị dropdown khi hover */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.user-info span {
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+    transition: border-color 0.3s ease;
+}
+
+.user-avatar:hover {
+    border-color: #0056b3;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%; /* Đặt dưới user-info */
+    right: 0;
+    background-color: #ffffff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    min-width: 160px;
+    display: none; /* Ẩn mặc định */
+    flex-direction: column;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    padding: 10px 0; /* Khoảng cách bên trong dropdown */
+}
+
+.dropdown-menu a {
+    padding: 12px 20px;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: background-color 0.2s ease, color 0.2s ease;
+    display: block; /* Đảm bảo mỗi item là một khối */
+}
+
+.dropdown-menu a:hover {
+    background-color: #f0f2f5;
+    color: var(--primary-color);
+}
+
+/* --- Logo Image Styles --- */
+.site-logo {
+    height: 40px; /* Điều chỉnh chiều cao phù hợp với thiết kế của bạn */
+    width: auto;
+    object-fit: contain;
+}
+
+/* --- Theme Toggle Button Styles --- */
+.theme-toggle-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    margin-right: 20px; /* Khoảng cách với user-info */
+    color: var(--text-color); /* Màu icon */
+    transition: color 0.3s ease;
+}
+
+.theme-toggle-btn:hover {
+    color: var(--primary-color);
+}
+
+/* --- Dark Mode Variables (định nghĩa biến cho chế độ tối) --- */
+body.dark-mode {
+    --primary-color: #7b68ee; /* Màu chính mới cho dark mode */
+    --background-color: #2c2c2c; /* Nền tối */
+    --card-background-color: #3a3a3a; /* Nền card tối */
+    --text-color: #f0f0f0; /* Chữ sáng */
+    --secondary-text-color: #ccc; /* Chữ phụ sáng hơn */
+    --shadow-color: rgba(0, 0, 0, 0.4); /* Bóng tối hơn */
+    --border-color: #444; /* Viền tối hơn */
+}
+
+/* --- Apply Dark Mode Styles --- */
+body.dark-mode {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+body.dark-mode .navbar {
+    background-color: var(--card-background-color);
+    box-shadow: 0 2px 10px var(--shadow-color);
+}
+
+body.dark-mode .navbar .logo-link {
+    color: var(--primary-color); /* Nếu logo là text, đổi màu */
+}
+
+body.dark-mode .navbar-center ul li a {
+    color: var(--text-color);
+}
+
+body.dark-mode .user-info span {
+    color: var(--text-color);
+}
+
+body.dark-mode .user-avatar {
+    border-color: var(--primary-color);
+}
+
+body.dark-mode .dropdown-menu {
+    background-color: var(--card-background-color);
+    box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+body.dark-mode .dropdown-menu a {
+    color: var(--text-color);
+}
+
+body.dark-mode .dropdown-menu a:hover {
+    background-color: var(--border-color); /* Màu nền hover đậm hơn */
+    color: var(--primary-color);
+}
+
+body.dark-mode .profile-card {
+    background-color: var(--card-background-color);
+    box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+body.dark-mode .profile-card:hover {
+    box-shadow: 0 8px 25px var(--shadow-color);
+}
+
+body.dark-mode .profile-name {
+    color: var(--text-color);
+}
+
+body.dark-mode .profile-detail {
+    color: var(--secondary-text-color);
+}
+
+body.dark-mode .profile-detail .icon {
+    color: var(--primary-color);
+}
+
+body.dark-mode .custom-file-upload {
+    background-color: var(--border-color);
+    color: var(--text-color);
+}
+
+body.dark-mode .custom-file-upload:hover {
+    background-color: #555;
+    color: var(--primary-color);
+}
+
+body.dark-mode #file-name-display {
+    color: var(--secondary-text-color);
+}
+
+/* Cập nhật màu nút nếu cần (có thể đã được định nghĩa ở trên) */
+body.dark-mode .btn-primary {
+    background-color: var(--primary-color);
+}
+body.dark-mode .btn-primary:hover {
+    background-color: #9283f5; /* Màu hover phù hợp với primary mới */
+}
+body.dark-mode .btn-secondary {
+    background-color: #888;
+}
+body.dark-mode .btn-secondary:hover {
+    background-color: #777;
+}
+
+/* Định nghĩa biến mặc định cho Light mode (nếu chưa có) */
+:root {
+    --primary-color: #007bff;
+    --background-color: #f4f7f6;
+    --card-background-color: #ffffff;
+    --text-color: #333;
+    --secondary-text-color: #666;
+    --shadow-color: rgba(0, 0, 0, 0.08);
+    --border-color: #e0e0e0;
+}

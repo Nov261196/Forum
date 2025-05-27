@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Glowing Border</title>
+ 
+</head>
+<body>
+<input type="checkbox" id="toggle-form" hidden />
+  <input type="checkbox" id="toggle-forgot" hidden />      
+
+  <div class="workspace-container">
+    <div class="glow-border"></div>
+
+    <div class="workspace-box " id="login-form">
+      <div>
+        <h2 class="">vudn</h2>
+      </div>
+      <div class="workspace-from">
+        <label>Email</label>
+        <input type="text" id="login-email" class="input-box" placeholder="Enter your Email" autocomplete="off"/>
+      </div>
+      <div class="workspace-from">
+        <label>Password</label>
+        <input type="password" id="login-password" class="input-box" placeholder="Enter your Password" autocomplete="off" />
+      </div>
+      <div class="workspace-remember-box">
+        <input type="checkbox" id="remember-me" />
+        <label for="remember-me" class="workspace-checkbox-label">Remember me</label>
+
+        <div class="workspace-forgot ">
+          <label for="toggle-forgot" class="sign-in-label">Forgot Password?</label>
+        </div>
+      </div>
+      <button class="button" id="login-button" type="submit">Login</button>
+      <p class="register-text">
+          Don't have an account? <label for="toggle-form" class="sign-in-label">Register</label>
+      </p>
+      <div class="workspace-social">
+        <p class="workspace-social-icon">
+          <a href="">
+            <img src="./assets/images/google.svg" alt="google icon" class="workspace-social-img">
+          </a>
+          <a href="">
+            <img src="./assets/images/facebook.svg" alt="facebook icon" class="workspace-social-img">
+          </a>
+          <a href=""><img src="./assets/images/linkedin.svg" alt="linkedin icon" class="workspace-social-img"></a>
+        </p>
+      </div>
+    </div>
+<div class="form-register" id="register-form">
+      <div>
+        <h2 class="">Create your account</h2>
+      </div>
+       <div class="form-input">
+        <label>First Name</label>
+        <input type="text" id="reg-first-name" class="input-box" placeholder="Enter your First Name" />
+      </div>
+      <div class="form-input">
+        <label>Last Name</label>
+        <input type="text" id="reg-last-name" class="input-box" placeholder="Enter your Last Name" />
+      </div>
+      <div class="form-input">
+        <label>Email</label>
+        <input type="email" id="reg-email" class="input-box" placeholder="Enter your Email" />
+      </div>
+      <div class="form-input">
+        <label>Password</label>
+        <input type="password" id="reg-password" class="input-box" placeholder="Enter your Password" />
+      </div>
+      <div class="form-input">
+        <label>Confirm Password</label>
+        <input type="password" id="reg-confirm-password" class="input-box" placeholder="Confirm your Password" />
+      </div>
+      <div class="form-input">
+        <label>Phone Number</label>
+        <input type="text" id="reg-phone-number" class="input-box" placeholder="Enter your Phone Number" />
+      </div>
+      <p class="register-text" id="register-message"></p> <p class="register-text">
+          By creating an account you agree to our  <a href="#">Terms & Privacy.</a>
+      </p>
+      <div>
+        <button class="form-btn" id="register-button" type="submit">Register</button>
+      </div>
+      <p class="register-text">
+          Already have an account? <label for="toggle-form" class="sign-in-label">Sign in</label>
+      </p>
+    </div>
+<div class="form-forgot" id="forgot-form">
+      <div>
+        <h2 class="">Forgot Account</h2>
+      </div>
+      <p class="register-text">
+          Remember your password? <label for="toggle-forgot" class="sign-in-label">Login here</label>
+      </p>
+      <div class="form-input">
+        <label>Email address</label>
+        <input type="text" id="forgot-email" class="input-box" placeholder="Enter your Email" />
+      </div>
+      <p class="register-text" id="forgot-message"></p> <div>
+        <button class="form-btn" id="reset-password-button" type="submit">Reset password</button>
+      </div>
+    </div>
+
+
+
+
+
+  </div>
+    <script src="./assets/js/script.js"></script> 
+</body>
+</html>

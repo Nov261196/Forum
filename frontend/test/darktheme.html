@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Glowing Border</title>
+
+  <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #000000;
+      --input-bg: #f5f5f5;
+      --primary-color: #1a73e8;
+      --border-color: #ccc;
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #121212;
+      --text-color: #ffffff;
+      --input-bg: #1e1e1e;
+      --primary-color: #00d1ff;
+      --border-color: #444;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Poppins', sans-serif;
+      transition: 0.3s ease;
+    }
+
+    .input-box {
+      background: var(--input-bg);
+      border: 1px solid var(--border-color);
+      color: var(--text-color);
+      padding: 10px;
+      border-radius: 6px;
+      width: 100%;
+      box-sizing: border-box;
+      margin-top: 4px;
+    }
+
+    .button {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      margin-top: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-color);
+  position: relative;
+}
+
+.custom-checkbox input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--primary-color);
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  background-color: transparent;
+  transition: background-color 0.2s ease;
+}
+
+.custom-checkbox input[type="checkbox"]:checked {
+  background-color: var(--primary-color);
+}
+
+.custom-checkbox input[type="checkbox"]::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 6px;
+  width: 4px;
+  height: 8px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.custom-checkbox input[type="checkbox"]:checked::after {
+  opacity: 1;
+}
+
+
+
+    .theme-toggle {
+      margin-top: 20px;
+      background-color: transparent;
+      border: 1px solid var(--primary-color);
+      color: var(--primary-color);
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="workspace-container">
+    <div class="glow-border"></div>
+    <div class="workspace-box">
+      <div>
+        <h2 class="">vudn</h2>
+      </div>
+
+      <div class="workspace-from">
+        <label>Email</label>
+        <input type="text" class="input-box" placeholder="Enter your Email" />
+      </div>
+
+      <div class="workspace-from">
+        <label>Password</label>
+        <input type="text" class="input-box" placeholder="Enter your Password" />
+      </div>
+
+      <div class="workspace-remember custom-checkbox">
+        <input type="checkbox" id="remember-me" />
+        <label for="remember-me">Remember me</label>
+      </div>
+
+      <button class="button" type="submit">Login</button>
+
+      <p class="register-text">
+        <a href="#">Forgot your account?</a>
+      </p>
+      <p class="register-text">
+        Don't have an account? <a href="#">Register</a>
+      </p>
+
+      <div class="workspace-social">
+        <p class="workspace-social-icon">
+          <a href=""><img src="./assets/images/google.svg" alt="google icon" class="workspace-social-img"></a>
+          <a href=""><img src="./assets/images/facebook.svg" alt="facebook icon" class="workspace-social-img"></a>
+          <a href=""><img src="./assets/images/linkedin.svg" alt="linkedin icon" class="workspace-social-img"></a>
+        </p>
+      </div>
+
+      <!-- Toggle Theme Button -->
+      <button id="theme-toggle" class="theme-toggle">Toggle Theme</button>
+    </div>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById('theme-toggle');
+    toggleBtn.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      if (currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+
+    // Load theme on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    });
+  </script>
+</body>
+</html>

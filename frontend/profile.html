@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hồ sơ người dùng</title>
+    <link rel="stylesheet" href="/assets/css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="light-mode">
+    <header class="navbar">
+        <div class="navbar-left">
+            <a href="/dashboard.html" class="logo-link">
+                <img src="/assets/images/vudn.png" alt="YourLogo" class="site-logo">
+            </a>
+        </div>
+        <nav class="navbar-center">
+            <ul>
+                <li><a href="/dashboard.html">Trang chủ</a></li>
+                <li><a href="#">Dịch vụ</a></li>
+                <li><a href="#">Sản phẩm</a></li>
+                <li><a href="#">Liên hệ</a></li>
+            </ul>
+        </nav>
+        <div class="navbar-right">
+            <button id="theme-toggle" class="theme-toggle-btn">
+                <i class="fas fa-moon"></i>
+            </button>
+            <div class="user-info" id="user-info">
+                <span id="username-display"></span>
+                <img id="user-avatar" src="/assets/images/logo-icon.png" alt="User Avatar" class="user-avatar">
+                <div class="dropdown-menu">
+                    <a href="/profile.html" id="profile-link">Hồ sơ</a>
+                    <a href="#" id="settings-link">Cài đặt</a>
+                    <a href="#" id="logout-button">Đăng xuất</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content profile-page-content">
+        <div class="profile-container">
+            <div class="profile-card profile-info-card">
+                <div class="avatar-display-wrapper">
+                    <img id="current-profile-avatar" src="/assets/images/logo-icon.png" alt="Profile Avatar" class="profile-main-avatar">
+                    <label for="avatar-input" class="upload-icon-overlay" title="Cập nhật ảnh đại diện">
+                        <i class="fas fa-camera"></i>
+                        <input type="file" id="avatar-input" name="avatar" accept="image/*" style="display: none;">
+                    </label>
+                </div>
+
+                <h2 id="profile-username" class="profile-name">Tên người dùng</h2>
+                <p class="profile-detail"><i class="fas fa-envelope icon"></i> <span id="profile-email">email@example.com</span></p>
+                <p class="profile-detail"><i class="fas fa-calendar-alt icon"></i> Tham gia từ: <span id="profile-created-at">DD/MM/YYYY</span></p>
+                <div class="profile-actions">
+                    <button class="btn btn-primary" id="edit-profile-btn"><i class="fas fa-edit"></i> Chỉnh sửa hồ sơ</button>
+                    <button class="btn btn-secondary" id="change-password-btn"><i class="fas fa-key"></i> Đổi mật khẩu</button>
+                </div>
+            </div>
+
+            <div class="profile-card upload-card">
+                <h2>Tải lên ảnh đại diện</h2>
+                <form id="avatar-upload-form" enctype="multipart/form-data">
+                    <div class="file-input-wrapper">
+                        <input type="file" id="avatar-input-form" name="avatar" accept="image/*" class="hidden-file-input">
+                        <label for="avatar-input-form" class="custom-file-upload">
+                            <i class="fas fa-cloud-upload-alt"></i> Chọn ảnh
+                        </label>
+                        <span id="file-name-display">Chưa có file nào được chọn</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary upload-btn"><i class="fas fa-upload"></i> Tải lên</button>
+                    <p id="avatar-upload-message" class="upload-message"></p>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="/assets/js/profile.js"></script>
+    <script src="/assets/js/theme-toggle.js"></script>
+</body>
+</html>

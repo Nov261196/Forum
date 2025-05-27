@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Xin chào!</title>
+    <link rel="stylesheet" href="/assets/css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="light-mode">
+    <header class="navbar">
+        <div class="navbar-left">
+            <a href="/dashboard.html" class="logo-link">
+                <img src="/assets/images/vudn.png" alt="YourLogo" class="site-logo">
+            </a>
+        </div>
+        <nav class="navbar-center">
+            <ul>
+                <li><a href="/dashboard.html">Trang chủ</a></li>
+                <li><a href="#">Dịch vụ</a></li>
+                <li><a href="#">Sản phẩm</a></li>
+                <li><a href="#">Liên hệ</a></li>
+            </ul>
+        </nav>
+        <div class="navbar-right">
+            <button id="theme-toggle" class="theme-toggle-btn">
+                <i class="fas fa-moon"></i>
+            </button>
+            <div class="user-info" id="user-info">
+                <span id="username-display"></span>
+                <img id="user-avatar" src="/assets/images/default-avatar.png" alt="User Avatar" class="user-avatar">
+                <div class="dropdown-menu">
+                    <a href="/profile.html" id="profile-link">Hồ sơ</a>
+                    <a href="#" id="settings-link">Cài đặt</a>
+                    <a href="#" id="logout-button">Đăng xuất</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <h1>Chào mừng, <span id="welcome-username"></span>!</h1>
+        <p>Đây là trang Dashboard của bạn.</p>
+    </main>
+
+    <script src="/assets/js/dashboard.js"></script>
+    <script src="/assets/js/theme-toggle.js"></script>
+</body>
+</html>
