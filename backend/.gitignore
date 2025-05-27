@@ -1,0 +1,21 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-store/
+coverage/
+.DS_Store # macOS specific
+.vscode/ # VS Code specific
+
+# Biến môi trường (Environment Variables)
+.env
+.env.*
+!.env.example # Giữ lại nếu bạn có file .env.example để làm mẫu
+
+# Thư mục chứa các file tải lên
+uploads/
+
+# Build artifacts
+dist/
+build/
